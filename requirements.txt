@@ -1,0 +1,5 @@
+django
+django-debug-toolbar
+djangolovessandstorm
+psycopg2
+uvicorn

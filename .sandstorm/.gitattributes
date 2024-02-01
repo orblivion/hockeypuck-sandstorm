@@ -1,0 +1,3 @@
+# vagrant-spk creates shell scripts, which must end in \n, even on a \r\n system.
+*.sh text eol=lf
+environment text eol=lf

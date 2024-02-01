@@ -1,0 +1,11 @@
+--- /etc/locale.gen	2023-06-02 16:39:12.206937389 +0000
++++ /etc/locale.gen	2023-06-06 06:13:43.148812532 +0000
+@@ -160,7 +160,7 @@
+ # en_SG.UTF-8 UTF-8
+ # en_US ISO-8859-1
+ # en_US.ISO-8859-15 ISO-8859-15
+-# en_US.UTF-8 UTF-8
++en_US.UTF-8 UTF-8
+ # en_ZA ISO-8859-1
+ # en_ZA.UTF-8 UTF-8
+ # en_ZM UTF-8
