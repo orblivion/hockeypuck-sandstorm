@@ -1,26 +1,17 @@
-#!/usr/bin/bash
-set -euo pipefail
+#!/bin/bash
+here="$(dirname "$(readlink -f "$0")")"
+cd "$here"
 
-. /opt/app/.sandstorm/environment
+set -exuo pipefail
 
 cd /opt/app
 
-# Initialize the virtual environment.
-if [ ! -f "$VENV_PYTHON" ] && [ ! -f "$VENV_PIP" ] ; then
-    if [ ! -d "$VENV" ] ; then
-        sudo mkdir "$VENV"
-    fi
-    sudo chown -R "$VAGRANT_USER" "$VENV"
-    sudo chgrp -R "$VAGRANT_GROUP" "$VENV"
-    "$PYTHON" -m venv --copies --clear --upgrade-deps "$VENV"
-    "$VENV_PIP" install wheel
-fi
+ls hockeypuck || git clone https://github.com/hockeypuck/hockeypuck
 
-# Install dependencies from requirements.txt.
-if [ -f /opt/app/requirements.txt ] ; then
-    "$VENV_PIP" install -r /opt/app/requirements.txt
-fi
+cd hockeypuck
 
-# Collect static files.
-/usr/bin/rm -rf "$STATIC_ROOT" && /usr/bin/mkdir "$STATIC_ROOT"
-PYTHONPATH="." "$VENV_PYTHON" "$DJANGO_MANAGE" collectstatic --no-input
+git checkout db0a441dede5a406258d0ea329bf219f101e85e4
+
+export PATH=$PATH:/usr/local/go/bin
+
+make build

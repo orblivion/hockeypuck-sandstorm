@@ -1,35 +1,16 @@
 CURL="curl --proto =https --tlsv1.2 -sSf"
-DJANGO_ROOT=/opt/app/django-project
-DJANGO_PROJECT=django_project
-DJANGO_MANAGE="$DJANGO_ROOT"/manage.py
-DJANGO_SECRET_KEY_FILE=/var/django-secret-key
 DOTSANDSTORM=/opt/app/.sandstorm
 DOWNLOADS="$DOTSANDSTORM"/downloads
-NGINX=/usr/sbin/nginx
-NGLIB=/var/lib/nginx
-NGLOG=/var/log/nginx
 PATCHES="$DOTSANDSTORM"/patches
 POSTGRESQL_MAJOR_VERSION=16
 POSTGRESQL_BIN=/usr/lib/postgresql/"$POSTGRESQL_MAJOR_VERSION"/bin
 # This value is also found in .sandstorm/service-config/postgresql.conf.
 POSTGRESQL_DATA=/var/lib/postgresql/"$POSTGRESQL_MAJOR_VERSION"/main
-POSTGRESQL_DB_DESCRIPTION="Sandstorm app"
-POSTGRESQL_DB_NAME=sandstorm-app
+POSTGRESQL_DB_DESCRIPTION="Hockeypuck"
+POSTGRESQL_DB_NAME=hkp
 POSTGRESQL_RELEASE_KEY=ACCC4CF8
 POSTGRESQL_RUN=/var/run/postgresql
 POSTGRESQL_SOCKET=/var/run/postgresql/.s.PGSQL.5432
-#PYTHON_PLUS_VERSION=python3.9
-PYTHON_PLUS_VERSION=python3.12
-PYTHON_PREFIX=/opt/"$PYTHON_PLUS_VERSION"
-#PYTHON=/usr/bin/"$PYTHON_PLUS_VERSION"
-PYTHON="$PYTHON_PREFIX"/bin/"$PYTHON_PLUS_VERSION"
-PYTHON_RELEASE_KEY=A821E680E5FA6305
-PYTHON_VERSION=3.12.1
 SERVICE_CONFIG="$DOTSANDSTORM"/service-config
-STATIC_ROOT=/opt/app/static
-UVICORN_SOCKET="/var/run/uvicorn.sock"
 VAGRANT_USER="vagrant"
 VAGRANT_GROUP="vagrant"
-VENV=/opt/app-venv
-VENV_PYTHON="$VENV"/bin/"$PYTHON_PLUS_VERSION"
-VENV_PIP="$VENV"/bin/pip
