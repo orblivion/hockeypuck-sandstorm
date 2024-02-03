@@ -106,7 +106,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "sandstorm-app",
-        "USER": "vagrant",
+        "USER": "user",
         "CONN_MAX_AGE": 300,
         "HOST": "/var/run/postgresql",
     }

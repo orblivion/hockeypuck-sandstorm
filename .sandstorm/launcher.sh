@@ -28,7 +28,7 @@ set -euo pipefail
 # PostgreSQL likes to map effective user IDs to names through calls to getpwuid.
 # Create temporary passwd and group databases.
 PASSWD_FILE=$(mktemp)
-echo "vagrant:x:$(geteuid):$(getegid):PostgreSQL administrator,,,:/tmp:/usr/bin/bash" > "$PASSWD_FILE"
+echo "user:x:$(geteuid):$(getegid):PostgreSQL administrator,,,:/tmp:/usr/bin/bash" > "$PASSWD_FILE"
 GROUP_FILE=$(mktemp)
 echo "postgres:x:$(getegid):" > "$GROUP_FILE"
 HOSTS_FILE=$(mktemp)
@@ -61,7 +61,7 @@ for (( i = 1; i <= 10; i++ )); do
 done
 
 # Create the database if it does not already exist.
-LD_PRELOAD=libnss_wrapper.so NSS_WRAPPER_PASSWD="$PASSWD_FILE" NSS_WRAPPER_GROUP="$GROUP_FILE" NSS_WRAPPER_HOSTS="$HOSTS_FILE" /usr/bin/createdb --encoding=UTF-8 --locale=en_US.UTF-8 --template=template0 --owner=vagrant "$POSTGRESQL_DB_NAME" "$POSTGRESQL_DB_DESCRIPTION" || true
+LD_PRELOAD=libnss_wrapper.so NSS_WRAPPER_PASSWD="$PASSWD_FILE" NSS_WRAPPER_GROUP="$GROUP_FILE" NSS_WRAPPER_HOSTS="$HOSTS_FILE" /usr/bin/createdb --encoding=UTF-8 --locale=en_US.UTF-8 --template=template0 --owner=user "$POSTGRESQL_DB_NAME" "$POSTGRESQL_DB_DESCRIPTION" || true
 
 # Apply database migrations
 echo "Applying database migrations..."
