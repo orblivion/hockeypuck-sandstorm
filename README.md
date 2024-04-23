@@ -66,6 +66,8 @@ We get the same thing. Without an auth header, we don't have a way to get past S
 
 If there were some sort of one-line proxy that a user could run, which only required common, trusted software, that could add the http auth headers to the gpg request, maybe we could make it work. Anything more than that, it would just bad UX.
 
+Another thought - what about trying [Sequoia](https://sequoia-pgp.org/)? It's even in the debian repository. The problem (to me) is, it hasn't passed a [security audit](https://sequoia-pgp.org/status/) due to lack of funding.
+
 # License
 
 The files in the repository are dual-licensed under the MIT and Apache 2.0
