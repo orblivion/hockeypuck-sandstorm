@@ -64,7 +64,7 @@ We get the same thing. Without an auth header, we don't have a way to get past S
 
 ## Possible Solutions
 
-**`/.sandstorm-token/<token>/some/path`** - [I missed this](https://docs.sandstorm.io/en/latest/developing/http-apis/). The workaround for websockets has the option of putting the token into the path. Would this concession work for https as well? Would be nice. Also, the `/some/path` portion gets passed to my grain, which I actually need as well. I'm not sure if the normal http api export gives us that either.
+**`/.sandstorm-token/<token>/some/path`** - [I missed this](https://docs.sandstorm.io/en/latest/developing/http-apis/). The workaround for websockets has the option of putting the token into the path. This seems to work for http(s) as well. The problem is that this requires a non-standard root path in the keyserver URL. Like headers, `gpg` ignores the path as well. It only pays attention to the domain.
 
 **Curl + GPG** - This would be ugly, but maybe there's some sort of command that we could give users that chains curl and gpg to recreate recv-keys and send-key. Something like `curl https://username:password@whatever.yourserver.sandcats.io | gpg --import` and `gpg --export yourkey | curl -X POST -d @- https://username:password@whatever.yourserver.sandcats.io`. But at that point I could just as well invent my own protocol on the server end as well, and it doesn't need to be a normal keyserver.
 
