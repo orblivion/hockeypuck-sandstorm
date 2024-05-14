@@ -4,7 +4,7 @@ The Hockeypuck integration (not Hockeypuck itself) was written by Daniel Krol.
 
 The postgres part was courtesy of [Troy Farrell](https://github.com/troyjfarrell), though he is working on improving this. If you're looking to do the same in your app, check out what he and/or the [Sandstorm project](https://sandstorm.org/community) may have said about this recently for the latest.
 
-# Why this can't work
+# Why I suspect this can't work
 
 My intention was to expose a sandstorm [HTTP API](https://docs.sandstorm.io/en/latest/developing/http-apis/), and instruct users who interact with it to specify a special keyserver URL that would send the necessary auth headers. This works for some applications, such as curl or any web browser.
 
@@ -71,6 +71,8 @@ We get the same thing. Without an auth header, we don't have a way to get past S
 **Proxy** - If there were some sort of one-line proxy that a user could run, which only required common, trusted software, that could add the http auth headers to the gpg request, maybe we could make it work. Anything more than that, it would just bad UX.
 
 **SequoiaPGP**: Another thought - what about trying [Sequoia](https://sequoia-pgp.org/) to see if it passes on auth headers? The problem (to me) is, it hasn't passed a [security audit](https://sequoia-pgp.org/status/) due to lack of funding. But for some reason 1) It's in the Debian repository and 2) It's been adopted by [SecureDrop](https://securedrop.org/news/migrating-securedrops-pgp-backend-from-gnupg-to-sequoia/). So maybe it's okay?
+
+**Sandstorm static publishing** Maybe we could set up static publishing for read-only (`--recv-keys`, etc) keyserver transactions. It would need to match gpg's query strings perfectly, though, I think. Who knows if it'll change format within the spec.
 
 # License
 
